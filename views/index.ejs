@@ -6,31 +6,38 @@
   <title>YourBlog</title>
 </head>
 <body>
-
+<div class="container">
   <%- include("partials/header.ejs") %>
   <% if (locals.posts && locals.posts.length != 0) { %>
     <% posts.forEach((posts) => { %> 
 
-      <h3><%=posts.title %></h3>
-      <p><%=posts.content %></p>
+      <div class="post-location">
+        <h3><%=posts.title %></h3>
+        
+        <p>
+          <%= posts.content.length > 150 ? `${posts.content.slice(0, 100)}...` : posts.content %>
+        </p>
 
-      <form action="/post" method="GET">
-        <input type="hidden" name="postTitle" value="<%= posts.title %>">
-        <input type="hidden" name="postContent" value="<%= posts.content %>">
-        <button type="submit" class="btn btn-default">Go-to-Post</button>
-      </form>
-      
-      <form action="/delete" method="GET">
-        <input type="hidden" name="postTitle" value="<%= posts.title %>">
-        <button type="submit" class="btn btn-default">Delete</button>
-      </form>
+        <div class="buttons">
+          <form action="/post" method="GET">
+            <input type="hidden" name="postTitle" value="<%= posts.title %>">
+            <input type="hidden" name="postContent" value="<%= posts.content %>">
+            <button type="submit" class="btn btn-default">Go-to-Post</button>
+          </form>
+        
+          <form action="/delete" method="GET">
+           <input type="hidden" name="postTitle" value="<%= posts.title %>">
+            <button type="submit" class="btn btn-default">Delete</button>
+          </form>
+        </div>
+      </div>
     <% }) %>
   <% } else { %>
 
     <div class="introduction">
       <p>This is your blog post. Where you can post your posts, edit and delete them.</p>
       <p>Example post: </p>
-      <h2>Your Title</h2>
+      <h2 class="title">Your Title</h2>
       <p>October 2023</p>
       <p>Lorem ipsum dolor sit amet, et proin, justo mus. Porta suspendisse turpis netus sagittis tortor at, vitae aliquet
       pharetra cras velit, id gravida, neque nulla lorem, posuere hac. Ultricies eget lacus vehicula, in ante aliquam
@@ -42,20 +49,18 @@
 
   <% } %>
 
-  <form action="/submit" method="POST">
-
-    <div class="form-group">
+  <div class="post-submit">
+    <form action="/submit" method="POST">
       <label for="postTile">Title</label>
       <input type="text" class="form-control" name="post-title" placeholder="Enter  Title" autofocus required>
-    </div>
-
-    <div class="form-group">
       <label for="postContent">Post</label>
       <textarea class="form-control" name="post-content" rows="3" autofocus required></textarea>
-    </div>
+      
+      <input type="submit" value="Submit" class="btn btn-default">
+    </form>
+  </div>
 
-    <input type="submit" value="Submit" class="btn btn-default">
-  </form>
-  
+  <%- include("partials/footer.ejs") %>
+</div>
 </body>
 </html>
