@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YourBlog</title>
+</head>
+<body>
+
+  <%- include("partials/header.ejs") %>
+  <% if (locals.posts && locals.posts.length != 0) { %>
+    <% posts.forEach((posts) => { %> 
+
+      <h3><%=posts.title %></h3>
+      <p><%=posts.content %></p>
+
+      <form action="/post" method="GET">
+        <input type="hidden" name="postTitle" value="<%= posts.title %>">
+        <input type="hidden" name="postContent" value="<%= posts.content %>">
+        <button type="submit" class="btn btn-default">Go-to-Post</button>
+      </form>
+      
+      <form action="/delete" method="GET">
+        <input type="hidden" name="postTitle" value="<%= posts.title %>">
+        <button type="submit" class="btn btn-default">Delete</button>
+      </form>
+    <% }) %>
+  <% } else { %>
+
+    <div class="introduction">
+      <p>This is your blog post. Where you can post your posts, edit and delete them.</p>
+      <p>Example post: </p>
+      <h2>Your Title</h2>
+      <p>October 2023</p>
+      <p>Lorem ipsum dolor sit amet, et proin, justo mus. Porta suspendisse turpis netus sagittis tortor at, vitae aliquet
+      pharetra cras velit, id gravida, neque nulla lorem, posuere hac. Ultricies eget lacus vehicula, in ante aliquam
+      et,facilisis tempor duis orci. Sed molestie sem in duis eu id, nisl id ultricies metus blandit eget praesent, pede
+      tempornullam, vitae arcu tortor suspendisse nibh risus. Nulla id suscipit reiciendis nulla erat. Porta enim aute
+      luctus,ducimus sodales dolor.
+      </p>
+    </div>
+
+  <% } %>
+
+  <form action="/submit" method="POST">
+
+    <div class="form-group">
+      <label for="postTile">Title</label>
+      <input type="text" class="form-control" name="post-title" placeholder="Enter  Title" autofocus required>
+    </div>
+
+    <div class="form-group">
+      <label for="postContent">Post</label>
+      <textarea class="form-control" name="post-content" rows="3" autofocus required></textarea>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-default">
+  </form>
+  
+</body>
+</html>

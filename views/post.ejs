@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <% if (locals.postTitle && locals.postContent) { %>
+        <h1><%= postTitle %></h1>
+        <p><%= postContent %></p>
+
+        <h1>Edit Post</h1>
+
+        <form action="/update" method="POST">
+            <input type="hidden" name="postTitle" value="<%= postTitle%>">
+            <input type="hidden" name="postContent" value="<%= postContent %>">
+            
+            <label for="updatedTitle">Updated Title:</label>
+            <input type="text" class="form-control" name="post-title" placeholder="Enter  Title" autofocus required>
+            <br>
+            <label for="updatedContent">Updated Content:</label>
+            <textarea class="form-control" name="post-content" rows="3" autofocus required></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary">Update Post</button>
+        </form>
+    <% } else { %>
+
+    <% } %>
+</body>
+</html>
