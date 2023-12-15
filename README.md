@@ -1,8 +1,4 @@
-To create a professional README structure for your GitHub repository for a blog post website, you can follow this template:
-
----
-
-# Blog Post Website
+# Blog Post Website : YourPersonalBlog-Website
 
 ## Introduction
 This project is a blog post website that allows users to create, view, edit, and delete blog posts. The homepage displays multiple blog posts, and users can navigate to each post to view its content.
@@ -41,3 +37,11 @@ Before running this project, make sure you have Node.js and npm installed on you
    ```
    localhost:3000
    ```
+
+## Contributing
+Please read [CONTRIBUTING.md] for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+This project is licensed under the [LICENSE.md] - see the file for details.
+
+---
