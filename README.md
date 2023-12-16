@@ -1,4 +1,4 @@
-# Blog Post Website : YourPersonalBlog-Website
+# Blog Post Website : MyBlog
 
 ## Introduction
 This project is a blog post website that allows users to create, view, edit, and delete blog posts. The homepage displays multiple blog posts, and users can navigate to each post to view its content.
@@ -17,7 +17,7 @@ Before running this project, make sure you have Node.js and npm installed on you
 ### Installation
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/SachithRKA/YourPersonalBlog-Website.git
+   git clone https://github.com/SachithRKA/MyBlog.git
    ```
 
 2. **Install Dependencies**
