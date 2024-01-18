@@ -31,12 +31,6 @@ app.post("/update", (req, res) => {
 
     const postTitle = req.query.postTitle;
     const postContent = req.query.postContent;
-    
-    console.log(postTitle);
-    console.log(postContent);
-
-    console.log(postContentUpdate);
-    console.log(postTitleUpdate);
 
     updatePost(postTitle, postContent, postTitleUpdate, postContentUpdate);
 });
@@ -51,7 +45,6 @@ app.post("/submit", (req, res) => {
     }
 
     posts.push(postsTemp);
-    console.log(posts);
     res.redirect('/');
 });
 
