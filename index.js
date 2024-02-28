@@ -21,18 +21,14 @@ app.get("/post", (req, res) => {
 
 app.get("/delete", (req, res) => {
     const postTitle = req.query.postTitle;
-    posts.pop(posts.postTitle);
-    res.redirect('/');
+    const postIndex = posts.findIndex(post => post.title === postTitle);
+
+    if (postIndex !== -1) posts.splice(postIndex, 1);
+    res.redirect("/");
 });
 
 app.post("/update", (req, res) => {
-    const postTitleUpdate  = req.body["post-title"];
-    const postContentUpdate = req.body["post-content"];
-
-    const postTitle = req.query.postTitle;
-    const postContent = req.query.postContent;
-
-    updatePost(postTitle, postContent, postTitleUpdate, postContentUpdate);
+    console.log(req);
 });
 
 app.post("/submit", (req, res) => {
@@ -51,13 +47,3 @@ app.post("/submit", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });  
-
-function updatePost(postTitleE, postContentE, updateTitle, updateContent) {
-    for (var i = 0; i < posts.length; i++) {
-        if (posts[i].title === postTitleE && posts[i].content === postContentE)
-        {
-            posts[i].title = updateTitle;
-            posts[i].content = updateContent;
-        }
-    }
-}
